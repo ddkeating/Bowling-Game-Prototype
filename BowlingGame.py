@@ -26,9 +26,11 @@ class BowlingGame:
 
     def isStrike(self, rollIndex):
         return self.rolls[rollIndex] == 10
+    
     def isSpare(self, rollIndex):
         return self.rolls[rollIndex] + self.rolls[rollIndex + 1] == 10
-    def stickeScore(self, rollIndex):
+    
+    def StrikeScore(self, rollIndex):
         return 10 + self.rolls[rollIndex + 1] + self.rolls[rollIndex + 2]
 
     def spareScore(self, rollIndex):
