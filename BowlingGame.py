@@ -5,22 +5,23 @@ class BowlingGame:
     def __init__(self):
         self.rolls = []
 
-    def roll(self, pins):
-        self.rolls.append(pins)
+    def rollBall(self, pinsKnocked):
+        self.rolls.append(pinsKnocked)
 
     def score(self):
+        
         result = 0
         rollIndex = 0
 
         for frameIndex in range(10):
             if self.isStrike(rollIndex):
-                result += self.StrikeScore(rollIndex)
+                result += self.calculateStrikeScore(rollIndex)
                 rollIndex += 1
             elif self.isSpare(rollIndex):
-                result += self.spareScore(rollIndex)
+                result += self.calculateSpareScore(rollIndex)
                 rollIndex += 2
             else:
-                result += self.frameScore(rollIndex)
+                result += self.calculateFrameScore(rollIndex)
                 rollIndex += 2
         return result
 
@@ -30,11 +31,11 @@ class BowlingGame:
     def isSpare(self, rollIndex):
         return self.rolls[rollIndex] + self.rolls[rollIndex + 1] == 10
     
-    def StrikeScore(self, rollIndex):
+    def calculateStrikeScore(self, rollIndex):
         return 10 + self.rolls[rollIndex + 1] + self.rolls[rollIndex + 2]
 
-    def spareScore(self, rollIndex):
+    def calculateSpareScore(self, rollIndex):
         return 10 + self.rolls[rollIndex + 2]
 
-    def frameScore(self, rollIndex):
+    def calculateFrameScore(self, rollIndex):
         return self.rolls[rollIndex] + self.rolls[rollIndex + 1]
