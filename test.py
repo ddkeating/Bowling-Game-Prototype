@@ -29,7 +29,7 @@ class TestBowlingGame(unittest.TestCase):
         self.game.roll(10)
         self.game.roll(4)
         self.game.roll(3)
-        self.rollMany(0, 16)
+        self.rollMany(0, 17)
         assert self.game.score() == 24
 
     def testPerfectGame(self):
